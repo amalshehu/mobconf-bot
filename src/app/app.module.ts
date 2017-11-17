@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SpeechComponent } from './speech/speech.component';
-import { SpeechService } from './speech.service';
+import { SpeechService } from './speech/speech.service';
 
 @NgModule({
   declarations: [

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SpeechService, Message } from './speech.service';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/scan';
 
 @Component({
   selector: 'speech',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpeechComponent implements OnInit {
 
-  constructor() { }
+  messages$: Observable<Message[]>;
+  userInput: string;
+  constructor(private speechService: SpeechService) {
 
-  ngOnInit() {
   }
-
+  ngOnInit() {
+    this.messages$ = this.speechService.conversation.asObservable()
+    .scan((accumulator, value) => accumulator.concat(value) );
+  }
+  pushMessage() {
+    this.speechService.connectBot(this.userInput);
+    this.userInput = '';
+  }
 }
