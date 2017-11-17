@@ -6,6 +6,7 @@
     "module": "es2015",
     "types": []
   },
+  "include": [ "../node_modules/api-ai-javascript/**/*.ts", "**/*.ts" ],
   "exclude": [
     "test.ts",
     "**/*.spec.ts"
