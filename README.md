@@ -16,12 +16,9 @@ ng new mobconf-bot
 ```
 ### Install dialogflow 
 ```
-npm i api-ai-javascript -dev --save
+npm i api-ai-javascript -D --save
 ```
-### Remove app prefix from angular-cli.json
-```
-"prefix": "",
-```
+
 ### Include dialog flow lib for bundling in tsconfig.app
 ```
   "include": [ "../node_modules/api-ai-javascript/**/*.ts", "**/*.ts" ],
@@ -33,7 +30,7 @@ ng generate component speech
 ```
 ### Create speech service
 ```
-ng generate service app/speech speech -m app
+ng generate service speech/speech -m app
 ```
 ### Import FormsModule in app.module.ts
 ```
@@ -57,7 +54,7 @@ Clear the default cli code first.
   <h1>
     MobConf BOT
   </h1>
-  <speech></speech>
+    <app-speech></app-speech>
 </div>
 ```
 ### Get client access token from dialogflow and add in environment.ts
@@ -92,7 +89,7 @@ readonly botClient = new ApiAiClient({accessToken: this.key});
 - In our service 
 ```
 talkWithBot() {
-    this.botClient.textRequest('Test').then(res => console.log('Test response: It's working... ', res));
+    this.botClient.textRequest('Test').then(res => console.log('Test response: Its working... ', res));
   }
 ```
 - Use dependency injection in app.component to get the service instance.
@@ -125,7 +122,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 ### Create a message class
 ```
 export class Message {
-  constructor(public payload: string, sender: string) {}
+  constructor(public payload: string, public sender: string) {}
 }
 ```
 ### Declare conversation property in SpeechService as behavior subject
