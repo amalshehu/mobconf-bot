@@ -1,9 +1,0 @@
-<ng-container *ngFor="let message of messages$ | async">
-  <div class="chatbox" [ngClass]="{'bot':message.sender === 'bot',
-                                  'user':message.sender === 'user'}">
-    {{message.payload}}
-  </div>
-</ng-container>
-<input class="inputBox" [(ngModel)]='userInput' type='text' (keyup.enter)="pushMessage()">
-<button class="button-send" (click)="pushMessage()">send</button>
-
